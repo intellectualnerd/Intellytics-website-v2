@@ -1,0 +1,658 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+/* :root {
+  --portfolio-dark-green: #181c14;
+  --portfolio-green: #697565;
+  --portfolio-white: #ffffff;
+  --portfolio-golden: #ecdfcc;
+  --portfolio-dark-gray: #2a2c25;
+  --portfolio-light-gray: #3c3d37;
+  --portfolio-font-xs: 14px;
+  --portfolio-font-s: 16px;
+  --portfolio-font-m: 24px;
+  --portfolio-font-l: 72px;
+  --portfolio-font-xl: 84px;
+} */
+:root {
+  --portfolio-dark-green: #ffffff;
+  --portfolio-green: #697565;
+  --portfolio-white: #5e5e5e;
+  --portfolio-golden: #f7ba62;
+  --portfolio-blue: #0073a6;
+  --portfolio-dark-gray: #f2f2f2;
+  --portfolio-light-gray: #f7f7f7;
+  --portfolio-font-xs: 14px;
+  --portfolio-font-s: 16px;
+  --portfolio-font-m: 24px;
+  --portfolio-font-l: 72px;
+  --portfolio-font-xl: 84px;
+}
+* {
+  color: var(--portfolio-white);
+}
+
+a {
+  color: inherit !important; /* blue colors for links too */
+  text-decoration: inherit !important; /* no underline */
+}
+body {
+  background-color: var(--portfolio-dark-green) !important;
+  color: var(--portfolio-white);
+  padding-top: 75px;
+}
+button {
+  border: none;
+  background-color: transparent;
+}
+.merriweather {
+  font-family: "Merriweather", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  background-color: var(--portfolio-blue);
+  opacity: 0.2;
+  transition:
+    height 0.3s ease-out,
+    width 0.3s ease-out;
+}
+.custom-cursor.hovering {
+  width: 100px;
+  height: 100px;
+}
+.custom-cursor a{
+  width: 100px;
+  height: 100px;
+}
+.mynav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 1000; /* Ensure nav stays on top */
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Flexbox container to align logo and links */
+.nav-container {
+  display: flex;
+  justify-content: space-between; /* Logo on left, links on right */
+  align-items: center;
+  width: 100%;
+  padding: 0 20px; /* Add some padding */
+  overflow: auto;
+}
+.paddingContainer {
+  padding-top: 50px;
+}
+/* Logo styling */
+.mylogo {
+  font-size: var(--portfolio-font-m);
+  text-transform: uppercase;
+}
+
+/* Links styling */
+.mylinks {
+  display: flex; /* Display links horizontally */
+  gap: 40px; /* Space between links */
+  list-style: none; /* Remove default list styling */
+  padding: 0;
+  margin: 0; /* Ensure no extra margins */
+  transition: flex-direction 0.3s ease-in-out;
+}
+.logo-img {
+  height: 48px;
+  width: 48px;
+  margin-right: 8px;
+}
+.mylinks li {
+  cursor: pointer; /* Make it clear these are clickable */
+  text-transform: uppercase;
+}
+
+.mylinks li:hover {
+  color: var(--portfolio-highlight-color); /* Optional hover effect */
+}
+
+.mylinks li.active {
+  font-weight: 700;
+  position: relative;
+}
+.mylinks li.active::after {
+  content: ""; /* Ensure pseudo-element renders */
+  position: absolute;
+  top: 0px;
+  right: -6px;
+  height: 12px;
+  width: 12px;
+  background-image: url("./assets/nabactive.svg");
+  background-size: contain; /* Ensure image fits inside the box */
+  background-repeat: no-repeat; /* Prevent image repetition */
+  z-index: -1;
+}
+.mybutton {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.mylinks.horizontal {
+  flex-direction: row !important;
+}
+
+.mylinks.vertical {
+  flex-direction: column !important;
+  align-items: center;
+}
+.nav-container.vertical {
+  flex-direction: column !important;
+  align-items: center;
+}
+.mynav.expanded {
+  height: 100svh;
+  background-color: var(--portfolio-dark-gray);
+}
+.viewable {
+  display: block !important;
+}
+.bigsize {
+  text-align: center;
+}
+.navOpenButton {
+  margin-top: 35px;
+  transform: translateY(-50%);
+  width: 30px;
+}
+.line1,
+.line2 {
+  width: 100%;
+  height: 1.5px;
+  margin-top: 5px;
+  background-color: var(--portfolio-golden);
+  transition: all 0.3s;
+  position: relative !important;
+}
+.line1.rotate1 {
+  margin-top: 0;
+  transform: rotate(45deg);
+  transform-origin: 50% 50%;
+}
+.line2.rotate2 {
+  margin-top: 0;
+  transform: rotate(-45deg);
+  transform-origin: 50% 50%;
+}
+.mycontainer {
+  padding: 0 8%;
+}
+.heroFonts {
+  font-size: 72px;
+  line-height: 100%;
+}
+.heroFonts > span {
+  color: var(--portfolio-golden);
+}
+.descrp {
+  width: 80%;
+  font-size: var(--portfolio-font-s);
+}
+.heroButton {
+  background-color: var(--portfolio-blue);
+  color: var(--portfolio-dark-gray);
+  padding: 12px 32px;
+  text-transform: uppercase;
+  font-size: var(--portfolio-font-s);
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+}
+#nextArrow {
+  transform: translateY(-10%);
+  margin-left: 12px !important;
+}
+.heroimg {
+  min-height: 640px;
+  height: 90vh;
+  transform: translateX(10%) translateY(-10%);
+}
+.bottombar {
+  position: relative;
+}
+.bottombar::after {
+  content: "";
+  position: absolute;
+  height: 0px;
+  width: 100%;
+  background-color: #697565;
+  left: 0;
+  bottom: 11.5%;
+}
+.title-montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-size: 48px;
+  line-height: 100%;
+  margin-top: 12px;
+}
+.challenges-about {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  line-height: 120%;
+  text-transform: uppercase;
+}
+.challenges-about > a {
+  text-decoration: underline !important;
+}
+.rightline {
+  position: absolute;
+  right: 50%;
+  height: 100%;
+  width: 0.5px;
+  background-color: #697565;
+}
+.mycard {
+  background-color: var(--portfolio-dark-gray);
+  margin: 10px 0px;
+  padding: 16px;
+  width: 100%;
+  min-height: 300px;
+  position: relative;
+}
+.left-card {
+  margin-right: 10px;
+}
+.right-card {
+  margin-left: 10px;
+}
+.mycardimg > img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.mycard-title {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  color: var(--portfolio-blue);
+  font-size: var(--portfolio-font-m);
+  line-height: 120%;
+}
+.mycard-about {
+  font-size: var(--portfolio-font-s);
+  line-height: 140%;
+}
+.myskill {
+  font-size: var(--portfolio-font-xs);
+  text-transform: uppercase;
+  padding: 8px 16px;
+  display: inline-block !important;
+  background-color: var(--portfolio-light-gray);
+  border-radius: 100px;
+  margin-right: 4px;
+  margin-bottom: 8px;
+}
+.knowmore {
+  margin: 12px 0 8px;
+  text-transform: uppercase;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.card-more {
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-size: var(--portfolio-font-l);
+  color: var(--portfolio-golden);
+  cursor: pointer;
+}
+.exploresvg {
+  height: 55px;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+.mycontainertop {
+  margin-top: 150px;
+}
+.mybottomline {
+  margin: 80px 0;
+  height: 0.5px;
+  width: 100%;
+  background-color: var(--portfolio-green);
+}
+.mycontainertop-2 {
+  margin-top: 200px;
+}
+.dreamimg1 {
+  height: 500px;
+  width: 100%;
+  padding-right: 12px !important;
+  object-fit: cover;
+}
+.dreamimg2 {
+  height: 245px;
+  width: 100%;
+  object-fit: cover;
+  display: block !important;
+}
+.dreamimg3 {
+  margin-top: 10px;
+  height: 245px;
+  width: 100%;
+  object-fit: cover;
+  display: block !important;
+}
+.myskills_bar {
+  position: absolute;
+  bottom: 32px;
+  transform: translateX(-10%) rotate(2deg);
+  height: 80px;
+  width: 120%;
+  background-color: var(--portfolio-light-gray);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  z-index: 99;
+}
+
+.capital {
+  text-transform: uppercase;
+}
+
+.scrolling-content {
+  display: flex;
+  animation: scroll-left var(--scroll-duration) linear infinite;
+  width: fit-content;
+}
+
+.skills-loop {
+  display: flex;
+}
+
+.myskills_bar div {
+  font-size: var(--portfolio-font-s);
+}
+.pop-box {
+  position: absolute;
+  top: 2%; /* adjust based on SVG */
+  left: 19.95%;
+  width: 56.4%;
+  height: 71%;
+  border-radius: 8px 8px 0px 0px;
+  background-color: var(--portfolio-white);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.8s ease-out;
+  z-index: 10;
+}
+.pop-box.active {
+  opacity: 1;
+  transform: scale(1);
+}
+.hero-img {
+  transform: translateX(-30px) translateY(-30px);
+  height: 300px;
+  margin-bottom: 100px;
+}
+.service-list {
+  font-size: 24px;
+  position: relative;
+}
+.service-list::after {
+  content: "";
+  position: absolute;
+  height: 0.5px;
+  width: 100%;
+  background-color: var(--portfolio-white);
+  left: 0;
+  bottom: 0%;
+}
+ul li::marker {
+  font-size: 10px; /* smaller bullet */
+  left: 0;
+}
+ul {
+  padding-left: 24px !important; /* reduce space (default ~40px) */
+}
+.service-logo {
+  width: 80%;
+}
+.approach-card{
+  background-color: var(--portfolio-dark-gray);
+  padding: 32px;
+  width: 100%;
+  position: relative;
+  height: 100%;
+}
+.approach-card-1::after {
+  content: "1.";
+  position: absolute;
+  top: -10px;
+  left: -8px;
+  background-color: var(--portfolio-golden);
+  color: var(--portfolio-dark-gray);
+  padding: 4px 16px;   /* controls size */
+  font-size: 32px;
+  font-weight: 600;
+}
+.approach-card-2::after {
+  content: "2.";
+  position: absolute;
+  top: -10px;
+  left: -8px;
+  background-color: var(--portfolio-golden);
+  color: var(--portfolio-dark-gray);
+  padding: 4px 16px;   /* controls size */
+  font-size: 32px;
+  font-weight: 600;
+}
+.approach-card-3::after {
+  content: "3.";
+  position: absolute;
+  top: -10px;
+  left: -8px;
+  background-color: var(--portfolio-golden);
+  color: var(--portfolio-dark-gray);
+  padding: 4px 16px;   /* controls size */
+  font-size: 32px;
+  font-weight: 600;
+}
+.approach-card-svg{
+  height: 150px;
+  margin-bottom: 16px;
+  max-width: 100%;
+  padding: 10px;
+}
+.approach-title{
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+/* When scrolled */
+.mynav.scrolled {
+  background: rgba(225, 225, 225, 0.8); /* 🔥 modern glass look */
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional mobile expanded state */
+
+/* Animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-1 * var(--scroll-width)));
+  }
+}
+
+@media screen and (max-width: 1450px) {
+  :root {
+    --portfolio-font-xs: 12px;
+    --portfolio-font-s: 16px;
+    --portfolio-font-m: 20px;
+    --portfolio-font-l: 52px;
+    --portfolio-font-xl: 72px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  :root {
+    --portfolio-font-xs: 12px;
+    --portfolio-font-s: 16px;
+    --portfolio-font-m: 20px;
+    --portfolio-font-l: 48px;
+    --portfolio-font-xl: 72px;
+  }
+  .heroimg {
+    max-height: 500px;
+    transform: translateX(0%) translateY(-10%);
+  }
+
+  .title-montserrat {
+    font-size: 32px;
+  }
+  .challenges-about {
+    font-size: 14px !important;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  :root {
+    --portfolio-font-xs: 12px;
+    --portfolio-font-s: 16px;
+    --portfolio-font-m: 20px;
+    --portfolio-font-l: 48px;
+    --portfolio-font-xl: 62px;
+  }
+  .mylinks {
+    display: none;
+    padding-top: 80px;
+  }
+  .mylinks li {
+    margin-top: 15px;
+    font-size: var(--portfolio-font-m);
+  }
+  .heroFonts {
+    font-size: 48px;
+  }
+  .hero-img {
+    margin-top: 48px;
+    transform: translateX(9%) translateY(0);
+    display: flex;
+    justify-self: end;
+  }
+  .bottombar::after {
+    bottom: 7.5%;
+  }
+
+  .mycardimg > img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  .mycontainertop {
+    margin-top: 150px;
+  }
+  .myskills_bar {
+    bottom: 100px;
+    height: 60px;
+  }
+  .custom-cursor {
+    display: none;
+  }
+  .mylogo {
+    position: absolute !important;
+    top: 20px;
+    left: 5%;
+  }
+  .mycontainer {
+    padding: 0 5%;
+  }
+  .mybutton {
+    display: block;
+    right: 5%;
+  }
+  .service-logo {
+    width: 100%;
+  }
+  .approach-card-1::after,.approach-card-2::after, .approach-card-3::after{
+    font-size: 24px;
+    left: -4px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .heroimg {
+    min-height: 400px;
+    height: 400px;
+    margin-top: 50px;
+    margin-right: 20px;
+  }
+  .paddingContainer {
+    padding-top: 0px;
+  }
+  .bottombar::after {
+    bottom: calc(50px);
+  }
+  .mytopinsmall {
+    margin-top: 12px !important;
+  }
+  .left-card {
+    margin-right: 0px;
+  }
+  .right-card {
+    margin-left: 0px;
+  }
+  .dreamimg1,
+  .dreamimg2,
+  .dreamimg3 {
+    width: 100% !important;
+    margin-top: 10px;
+    padding-right: 0 !important;
+    height: 300px;
+  }
+
+  .myskills_bar {
+    bottom: 50px;
+    height: 60px;
+    transform: rotate(0);
+  }
+  .short_bar_space {
+    padding-bottom: 80px;
+  }
+  .service-list {
+    font-size: 18px;
+  }
+  .approach-card{
+    height: auto;
+    margin-bottom: 16px;
+  }
+}
+@media screen and (max-width: 576px) {
+}

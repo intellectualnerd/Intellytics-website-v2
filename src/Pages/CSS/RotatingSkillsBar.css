@@ -1,0 +1,25 @@
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  position: relative;
+  width: 100%;
+  background-color: #222;
+}
+
+.marquee {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: scroll 20s linear infinite;
+}
+
+.skill {
+  margin-right: 40px;
+  color: #f5f5f5;
+  font-size: 1.2rem;
+}
+
+.separator {
+  margin-left: 10px;
+  margin-right: 10px;
+}
