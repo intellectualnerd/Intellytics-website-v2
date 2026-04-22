@@ -47,7 +47,7 @@ const Home = () => {
             <div style={{ width: "100%" }}>
               <svg
                 className="mt-4"
-                style={{ height: "300px" }}
+                style={{ height: "300px", maxWidth: "100%" }}
                 viewBox="0 0 508 408"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

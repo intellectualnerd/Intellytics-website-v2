@@ -653,6 +653,10 @@ ul {
     height: auto;
     margin-bottom: 16px;
   }
+  .hero-img {
+    max-width: 100%;
+    transform: translateX(0%) translateY(0);
+  }
 }
 @media screen and (max-width: 576px) {
 }
