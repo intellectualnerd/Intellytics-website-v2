@@ -646,6 +646,11 @@ ul {
   .short_bar_space {
     padding-bottom: 80px;
   }
+
+  .short_bar_space-2 {
+    padding-bottom: 80px;
+  }
+
   .service-list {
     font-size: 18px;
   }
